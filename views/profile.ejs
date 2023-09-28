@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* body {
+          
+        } */
+  
+        h1 {
+          background-color: rgb(201, 233, 57);
+          color: rgb(5, 5, 5);
+          text-align: center;
+          padding: 2rem;
+          border-radius: 50%;
+        }
+  
+        p {
+          color: green;
+          background-image: url("./tiger.jpg");
+          width: 50%;
+          height: 50%;
+          margin: auto;
+          padding: 5rem;
+          text-align: center;
+        }
+
+        span {
+            color: red;
+        }
+      </style>
+    <title>profile page</title>
+</head>
+<body>
+    <%- include("common/header"); %>
+    <h1>Welcome <span><%= user.name %></span></h1>
+    <h2>college: <span><%= user.college %></span></h2>
+    <h3>Enrollment number: <span><%= user.id %></span></h3>
+
+    <ul>
+        <% user.skills.forEach((item) => { %>
+            <li><%= item %></li>
+       <% }) %>
+    </ul>
+
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quis temporibus nihil expedita perferendis atque explicabo, corporis molestias, reprehenderit officiis amet ad. Omnis deserunt odio reiciendis, totam atque ipsa. Blanditiis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, aspernatur id earum quisquam, officiis non maiores illo alias modi cum laborum dolores, perferendis repellendus nisi cupiditate a voluptas officia dolor.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, laboriosam quae. Culpa cumque cupiditate nulla rem ab in sunt nam consequatur aut commodi! Consequatur assumenda ducimus temporibus error molestias? Quasi?Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ipsam numquam quae accusantium. Iusto adipisci, facere hic, necessitatibus nulla optio magnam aspernatur eveniet exercitationem laborum inventore, nobis ipsa saepe? Reiciendis.lorem
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas ullam, nam dolorem aliquid odio quia autem laboriosam? Porro, omnis? Nam odit at sed rerum non unde officia cupiditate ipsa totam.
+    </p>
+</body>
+</html>

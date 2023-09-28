@@ -46,32 +46,45 @@
 
 // app.listen(8080);
 
+
+
+
+
+
+
 //Middle ware
-
 const express = require('express');
+const reqfilter = require("./middleware");
 const app = express();
+const route = express.Router();
 
+route.use(reqfilter);
 //This middleware applied on each and every route 
 // this middleware known as Application-level middleware
-const reqfilter = (req, res, next) => {
-    // console.log("middleware filter");
-    if (!req.query.age) {
-        res.send("PLEASE provide age");
-    }
-    else if (req.query.age < 18) {
-        res.send("Permission denied! because age must be between 18 and above");
-    }
-    else {
-        next();
-    }
+// const reqfilter = (req, res, next) => {
+//     // console.log("middleware filter");
+//     if (!req.query.age) {
+//         res.send("PLEASE provide age");
+//     }
+//     else if (req.query.age < 18) {
+//         res.send("Permission denied! because age must be between 18 and above");
+//     }
+//     else {
+//         next();
+//     }
 
-}
+// }
 
-app.use(reqfilter); // this will applied for each route
+// app.use(reqfilter); // this will applied for each route
 
 app.get("/", (req, res) => {
     res.send("welcome to Home page")
 })
+
+//APPLY MIDDLEWARE ONLY ONE route by put "reqfilter" on particular routes
+// app.get("/login",reqfilter, (req, res) => {
+//     res.send("Welcome to login page")
+// })
 
 app.get("/login", (req, res) => {
     res.send("Welcome to login page")
@@ -81,4 +94,13 @@ app.get("/about", (req, res) => {
     res.send("Welcome to about page lorem! You can find more information about   this page here: http://     lorem.org")
 })
 
+route.get("/help", (req, res) => {
+    res.send("Welcome to HELP page lorem! You can find more information about   this page here: http://     lorem.org")
+})
+
+route.get("/contact", (req, res) => {
+    res.send("Welcome to contact page lorem! You can find more information about   this page here: http://     lorem.org")
+})
+
+app.use("/",route);
 app.listen(8080);
